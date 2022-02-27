@@ -1,0 +1,48 @@
+
+    <!-- messaggio lista studenti vuota -->
+    <p *ngIf="Student.length <= 0" class="no-data text-center">Non sono stati ancora aggiunti studenti</p>
+
+
+    <!--Nuova tabella-->
+
+
+    <table class="responsivetable table table-bordered">
+      <thead class="table-info"  *ngIf="Student.length > 0">
+        <tr>
+          <th scope="col">ID Studente</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Cognome</th>
+          <th scope="col">Settore studi</th>
+          
+          <th scope="col">Email</th>
+          <th scope="col">Data Di nascita</th>
+          <th scope="col">Numero di telefono</th>
+          <th scope="col center">Aggiorna</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of Student; let i = index">
+          <td data-label="ID Studente">{{i}}</td>
+          <td data-label="Nome">{{student.name}}</td>
+          <td data-label="Cognome">{{student.surname}}</td>
+          <td data-label="Settore studi">{{student.fieldOfStudy}}</td>
+          <td data-label="Email">{{student.email}}</td>
+          <td data-label="Data di nascita">{{student.dateOfBirth | date }}</td>
+          <td data-label="Numero di telefono">{{student.phoneNumber}}</td>
+          <td class="text-center edit-block">
+            <span class="edit" [routerLink]="['/edit-students/', student._id]">
+              <button  type="button" class="btn btn-primary btn-sm me-1"><i class="fas fa-edit"></i></button>
+            </span>
+            <span class="delete" (click)="removeStudent(student, i)">
+              <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+            </span>
+          </td>
+    
+        </tr>
+      </tbody>
+  
+          
+    </table>
+ 
+ 

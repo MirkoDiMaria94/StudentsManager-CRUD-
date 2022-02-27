@@ -1,0 +1,96 @@
+<div class=" mt-4 row justify-content-center">
+    <div class="col-md-4 register-student">
+     
+
+      <div class="card card-outline-secondary">
+        <div class="card-header">
+          <h3 class="mb-0">Aggiorna Studente</h3>
+          <p class=" mt-3">E' possibile aggionare uno o più campi.</p>
+          <p class="text-danger">Tutti i campi sono obbligatori.</p>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+ 
+            <div class="form-group">
+              <label for="inputName">Nome</label>
+              <input class="form-control" type="text" formControlName="name">
+              <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+                Inserisci il nome.
+              </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputName">Cognome</label>
+                <input class="form-control" type="text" formControlName="surname">
+                <div class="invalid-feedback" *ngIf="submitted && myForm.surname.errors?.required">
+                 Inserisci il cognome.
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group">
+                  <label for="inputPassword3">Settore studi</label>
+                  <select class="custom-select form-control" (change)="updateProfile($event.target.value)"
+                    formControlName="fieldOfStudy">
+                    <option value="">Scegli...</option>
+                    <option *ngFor="let studentProfile of StudentsProfile" value="{{studentProfile}}">{{studentProfile}}
+                    </option>
+                  </select>
+                  <!-- error -->
+                  <div class="invalid-feedback" *ngIf="submitted && myForm.fieldOfStudy.errors?.required">
+                    Scegli il settore studi.
+                  </div>
+                </div>
+              </div>
+
+
+          
+            <div class="form-group">
+              <label for="inputEmail3">Email</label>
+              <input class="form-control" type="text" formControlName="email">
+              <!-- error -->
+              <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.required">
+                Inserisci l'email.
+              </div>
+              <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.pattern">
+                Inserisci una mail valida.
+              </div>
+            </div>
+
+              <!--Input Date-->
+            <div class="form-group">
+              <label for="inputName">Data di Nascita</label>
+              <input class="form-control" type="date" formControlName="dateOfBirth">
+              <!-- error -->
+              <div class="invalid-feedback" *ngIf="submitted && myForm.dateOfBirth.errors?.required">
+                Inserisci la data di nascita.
+              </div>
+            </div>
+ 
+      
+ 
+            <div class="form-group">
+              <label for="inputVerify3">Numero di telefono</label>
+              <input class="form-control" type="text" formControlName="phoneNumber">
+              <!-- error -->
+              <div class="invalid-feedback" *ngIf="submitted && myForm.phoneNumber.errors?.required">
+                Inserisci il numero di telefono.
+              </div>
+              <div class="invalid-feedback" *ngIf="submitted && myForm.phoneNumber.errors?.pattern">
+                Inserisci un numero di telefono valido.
+              </div>
+            </div>
+ 
+            <div class="form-group">
+              <button class=" mt-4 btn btn-primary btn-lg btn-block" type="submit">Aggiorna</button>
+            </div>
+          </form>
+        </div>
+      </div><!-- form  -->
+    </div>
+  </div>
+
+
+
+  
+ 

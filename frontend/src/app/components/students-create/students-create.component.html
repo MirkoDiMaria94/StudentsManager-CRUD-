@@ -1,0 +1,113 @@
+
+  
+
+   <div class="container bg-light mt-4">
+    <div class="row">
+
+      
+        <div class="col">
+          <h1>Aggiungi Studente</h1>
+          <h5>Inserisci i dati dello studente</h5>
+          <p class="text-danger">Tutti i campi sono obbligatori</p>
+          <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+            
+            <div class="row mb-4">
+              <div class="col">
+                <div class="form-group">
+                  <label for="inputName">Nome</label>
+                  <input class="form-control" type="text" formControlName="name">
+                  <!-- error -->
+                  <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+                    Inserisci il nome.
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="inputName">Cognome</label>
+                  <input class="form-control" type="text" formControlName="surname">
+                  <!-- error -->
+                  <div class="invalid-feedback" *ngIf="submitted && myForm.surname.errors?.required">
+                    Inserisci il cognome.
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Text input -->
+            <div class="row mb-4">
+              <div class="col">
+              <div class="form-group">
+                <label for="inputPassword3">Settore studi</label>
+                <select class="custom-select form-control" (change)="updateProfile($event.target.value)"
+                  formControlName="fieldOfStudy">
+                  <option value="">Scegli...</option>
+                  <option *ngFor="let studentProfile of StudentsProfile" value="{{studentProfile}}">{{studentProfile}}
+                  </option>
+                </select>
+                <!-- error -->
+                <div class="invalid-feedback" *ngIf="submitted && myForm.fieldOfStudy.errors?.required">
+                  Scegli il settore studi.
+                </div>
+              </div>
+            </div>
+            <div class="col">
+            <div class="form-group">
+              <label for="inputName">Data di Nascita</label>
+              <input class="form-control" type="date"  formControlName="dateOfBirth">
+              <!-- error -->
+              <div class="invalid-feedback" *ngIf="submitted && myForm.dateOfBirth.errors?.required">
+                Inserisci la data di nascita.
+              </div>
+            </div>
+          </div>
+        </div>
+      
+            
+          
+            <!-- Email -->
+            <div class="form-group mb-4">
+              <label for="inputEmail3">Email</label>
+              <input class="form-control" type="text" formControlName="email">
+              <!-- error -->
+              <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.required">
+                Inserisci l'email.
+              </div>
+              <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.pattern">
+                Inserisci un email valida.
+              </div>
+            </div>
+
+
+            <!-- Telephone number-->
+            <div class="form-group mb-4">
+              <label for="inputVerify3">Numero di telefono</label>
+              <input class="form-control" type="text" formControlName="phoneNumber">
+              <!-- error -->
+              <div class="invalid-feedback" *ngIf="submitted && myForm.phoneNumber.errors?.required">
+                Inserisci un numero di telefono.
+              </div>
+              <div class="invalid-feedback" *ngIf="submitted && myForm.phoneNumber.errors?.pattern">
+                Inserisci un numero di telefono valido.
+              </div>
+            </div>
+          
+           
+          
+          
+            <!-- Submit button -->
+            <div class="form-group mt-4">
+              <button class="btn btn-primary btn-lg btn-block mt-4" type="submit">Registra Studente</button>
+            </div>
+   
+          </form>
+       
+ </div>
+
+
+  </div>
+
+
+
+
+  
